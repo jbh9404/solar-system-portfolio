@@ -111,17 +111,11 @@ function Sun() {
   );
 }
 
-function CameraSetup() {
-  const { camera } = useThree();
-  
-  useEffect(() => {
-    // If it's a mobile screen, render fully zoomed out initially to prevent cut-offs
-    if (window.innerWidth < 768) {
-      camera.position.set(0, 34, 60);
-    }
-  }, [camera]);
-
-  return null;
+function getInitialCameraPosition(): [number, number, number] {
+  if (typeof window !== "undefined" && window.innerWidth < 768) {
+    return [0, 34, 60];
+  }
+  return [0, 20, 35];
 }
 
 export default function SolarSystem() {
@@ -176,8 +170,7 @@ export default function SolarSystem() {
         </div>
       </div>
 
-      <Canvas camera={{ position: [0, 20, 35], fov: 45 }}>
-        <CameraSetup />
+      <Canvas camera={{ position: getInitialCameraPosition(), fov: 45 }}>
         <ambientLight intensity={0.05} />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         
