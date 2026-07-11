@@ -52,14 +52,10 @@ export default function Navigation() {
                 key={link.path}
                 href={link.path}
                 className={`relative px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  isActive
-                    ? "text-white"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                  isActive ? "text-white" : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
               >
-                {isActive && (
-                  <span className="absolute inset-0 bg-white/10 rounded-full -z-10" />
-                )}
+                {isActive && <span className="absolute inset-0 bg-white/10 rounded-full -z-10" />}
                 {link.name}
               </Link>
             );
@@ -81,11 +77,7 @@ export default function Navigation() {
               stroke="currentColor"
               strokeWidth={2.5}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
             <svg
@@ -96,11 +88,7 @@ export default function Navigation() {
               stroke="currentColor"
               strokeWidth={2.5}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
         </button>
@@ -109,9 +97,7 @@ export default function Navigation() {
       {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 bg-black/95 backdrop-blur-xl z-[100] transition-all duration-500 flex flex-col items-center justify-center md:hidden ${
-          isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -124,9 +110,7 @@ export default function Navigation() {
                 href={link.path}
                 onClick={() => setIsOpen(false)}
                 className={`text-3xl font-bold tracking-widest transition-all duration-300 ${
-                  isActive
-                    ? "text-white scale-110"
-                    : "text-gray-500 hover:text-white"
+                  isActive ? "text-white scale-110" : "text-gray-500 hover:text-white"
                 }`}
                 style={{
                   transitionDelay: `${isOpen ? i * 50 : 0}ms`,
