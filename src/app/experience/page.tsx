@@ -59,7 +59,7 @@ export default function ExperiencePage() {
     },
     {
       role: "CSO & Frontend Developer (Founding Member)",
-      company: "TraveliMap (Location-based Travel Startup)",
+      company: "TravelyMap (Location-based Travel Startup)",
       period: "2019.10 - 2021.03",
       details: [
         "Spearheaded the initial MVP and official product launch, solely developing React-based UI components.",
