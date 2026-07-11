@@ -43,8 +43,8 @@ export default function ProjectsPage() {
         "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
     },
     {
-      title: "TraveliMap",
-      company: "TraveliMap (Startup)",
+      title: "TravelyMap",
+      company: "TravelyMap (Startup)",
       desc: "Co-founded a location-based travel itinerary platform. Reached 40,000 users, built core UI components, and acquired 1M+ views on marketing channels.",
       year: "2019 - 2021",
       tags: ["React", "PHP", "Google Map API", "AWS"],
