@@ -9,18 +9,16 @@ export default function ProjectsPage() {
       year: "2025 - 2026",
       tags: ["React", "TypeScript", "Vite", "Spring Boot", "AWS"],
       link: "https://www.payverseglobal.com/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/payverse_renewal.png",
     },
     {
       title: "Shopify Global Payment App",
       company: "Eromnet",
       desc: "Commercialized an offsite payment app strictly adhering to Shopify guidelines. Ensured 100% data integrity with real-time S2S synchronization and webhook integration.",
-      year: "2025 - 2026",
+      year: "2025",
       tags: ["Remix", "Shopify CLI", "Node.js", "GraphQL"],
       link: "https://apps.shopify.com/payverse-payments",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/payverse_shopify.png",
     },
     {
       title: "MEDMAP Hybrid Platform",
@@ -29,8 +27,7 @@ export default function ProjectsPage() {
       year: "2022 - 2023",
       tags: ["React", "Zustand", "WPF", "C#", "Swift"],
       link: "https://www.medmap.kr/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/medmap.png",
     },
     {
       title: "WorkOnward",
@@ -39,8 +36,7 @@ export default function ProjectsPage() {
       year: "2021",
       tags: ["React", "Node.js", "Mapbox API", "MongoDB"],
       link: "https://www.workonward.com/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/workonward.png",
     },
     {
       title: "TravelyMap",
@@ -49,8 +45,7 @@ export default function ProjectsPage() {
       year: "2019 - 2021",
       tags: ["React", "PHP", "Google Map API", "AWS"],
       link: "#",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/travelymap.png",
     },
   ];
 
@@ -62,8 +57,7 @@ export default function ProjectsPage() {
       year: "2026",
       tags: ["Next.js", "TypeScript", "React", "TailwindCSS"],
       link: "https://byunghoon-portfolio.vercel.app/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/portfolio_project.png",
     },
     {
       title: "PINCATION",
@@ -72,8 +66,7 @@ export default function ProjectsPage() {
       year: "2022 - 2023",
       tags: ["React Native", "Next.js", "Spring Boot", "PostgreSQL"],
       link: "https://pincation.com/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/pincation_project.png",
     },
     {
       title: "Wecume Photo Editor",
@@ -82,8 +75,7 @@ export default function ProjectsPage() {
       year: "2021",
       tags: ["React", "Node.js", "Express", "MySQL", "Cordova"],
       link: "https://wecume.com/",
-      image:
-        "https://fastly.picsum.photos/id/973/200/300.jpg?hmac=gFjS6R63ZUmM9pkLFyPxuEmsxvZ_e8VJxB3mcXpvTUQ",
+      image: "/projects/wecume.png",
     },
   ];
 
