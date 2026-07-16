@@ -34,6 +34,9 @@ function Planet({ name, color, radius, distance, speed, path, isPaused, onNaviga
       groupRef.current.position.x = Math.cos(angleRef.current) * distance;
       groupRef.current.position.z = Math.sin(angleRef.current) * distance;
       planetRef.current.rotation.y += delta * 0.5;
+
+      const targetScale = hovered ? 1.3 : 1;
+      planetRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.15);
     }
   });
 
@@ -77,11 +80,25 @@ function Planet({ name, color, radius, distance, speed, path, isPaused, onNaviga
 
         <Html distanceFactor={20} center position={[0, radius + 1.2, 0]} zIndexRange={[0, 0]}>
           <div
-            className="text-white text-3xl md:text-2xl font-bold bg-black/70 px-7 py-3 md:px-6 md:py-2.5 rounded-xl whitespace-nowrap pointer-events-none transition-all duration-300 backdrop-blur-md border border-white/20"
+            className="text-white text-3xl md:text-2xl font-bold bg-black/70 px-7 py-3 md:px-6 md:py-2.5 rounded-xl whitespace-nowrap pointer-events-auto cursor-pointer transition-all duration-300 backdrop-blur-md border border-white/20"
             style={{
-              transform: hovered ? "scale(1.15)" : "scale(1)",
+              transform: hovered ? "scale(1.3)" : "scale(1)",
               boxShadow: hovered ? `0 0 20px ${color}90` : "0 4px 6px -1px rgba(0, 0, 0, 0.5)",
               textShadow: "0 2px 4px rgba(0,0,0,0.8)",
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onNavigate(path);
+            }}
+            onPointerOver={(e) => {
+              e.stopPropagation();
+              setHovered(true);
+              isPaused.current = true;
+            }}
+            onPointerOut={(e) => {
+              e.stopPropagation();
+              setHovered(false);
+              isPaused.current = false;
             }}
           >
             {name}
