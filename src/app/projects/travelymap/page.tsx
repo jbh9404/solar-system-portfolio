@@ -206,19 +206,19 @@ export default function TravelyMapProject() {
             Gallery
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* {[1, 2, 3, 4].map((num) => (
+            {[1, 2, 3, 4].map((num) => (
               <div
                 key={num}
                 className="relative group overflow-hidden rounded-2xl bg-white/5 border border-white/10 aspect-video shadow-lg"
               >
                 <Image
-                  src=""
+                  src={`/projects/travelymap-sample-${num}.png`}
                   alt={`TravelyMap Sample ${num}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-            ))} */}
+            ))}
           </div>
         </section>
 
