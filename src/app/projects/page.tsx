@@ -44,7 +44,7 @@ export default function ProjectsPage() {
       desc: "Co-founded a location-based travel itinerary platform. Reached 40,000 users, built core UI components, and acquired 1M+ views on marketing channels.",
       year: "2019 - 2021",
       tags: ["React", "PHP", "Google Map API", "AWS"],
-      link: "#",
+      link: "/projects/travelymap",
       image: "/projects/travelymap.png",
     },
   ];
