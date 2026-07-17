@@ -1,8 +1,30 @@
+"use client";
+
 import PageContainer from "@/components/PageContainer";
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function TravelyMapProject() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedImage]);
+
   return (
     <PageContainer title="TravelyMap" color="#e86a58">
       <div className="flex flex-col gap-12">
@@ -168,7 +190,7 @@ export default function TravelyMapProject() {
             </div>
             <p className="text-white/80 leading-relaxed">
               <strong className="text-white">Overview:</strong> Establishing marketing channels to
-              raise TravelyMap's brand awareness and drive new user acquisition.
+              raise TravelyMap&apos;s brand awareness and drive new user acquisition.
             </p>
 
             <div className="mt-6 space-y-4">
@@ -178,9 +200,9 @@ export default function TravelyMapProject() {
                   <strong className="text-white">
                     Achieved 1 Million Cumulative Views & Channel Growth:
                   </strong>{" "}
-                  Operated the enterprise blog "Naver Post" channel, publishing curated content such
-                  as recommended travel destinations, cafes, and restaurants nationwide along with
-                  the TravelyMap map, reaching over 1 million cumulative views.
+                  Operated the enterprise blog &quot;Naver Post&quot; channel, publishing curated
+                  content such as recommended travel destinations, cafes, and restaurants nationwide
+                  along with the TravelyMap map, reaching over 1 million cumulative views.
                 </li>
                 <li>
                   <strong className="text-white">User Acquisition & Service Activation:</strong>{" "}
@@ -209,7 +231,8 @@ export default function TravelyMapProject() {
             {[1, 2, 3, 4].map((num) => (
               <div
                 key={num}
-                className="relative group overflow-hidden rounded-2xl bg-white/5 border border-white/10 aspect-video shadow-lg"
+                className="relative group overflow-hidden rounded-2xl bg-white/5 border border-white/10 aspect-video shadow-lg cursor-pointer"
+                onClick={() => setSelectedImage(`/projects/travelymap-sample-${num}.png`)}
               >
                 <Image
                   src={`/projects/travelymap-sample-${num}.png`}
@@ -217,6 +240,11 @@ export default function TravelyMapProject() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                  <span className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/60 px-6 py-2 rounded-full backdrop-blur-sm border border-white/20 transform translate-y-4 group-hover:translate-y-0">
+                    View Image
+                  </span>
+                </div>
               </div>
             ))}
           </div>
@@ -232,6 +260,37 @@ export default function TravelyMapProject() {
           </Link>
         </div>
       </div>
+
+      {/* Lightbox Modal via Portal */}
+      {mounted && selectedImage && createPortal(
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div 
+            className="relative w-full max-w-6xl aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={selectedImage}
+              alt="Enlarged gallery view"
+              fill
+              className="object-contain"
+            />
+            <button 
+              className="absolute -top-12 right-0 md:-right-12 text-white/70 hover:text-white transition-colors p-2 bg-white/5 hover:bg-white/20 rounded-full backdrop-blur-sm border border-white/10"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>,
+        document.body
+      )}
     </PageContainer>
   );
 }

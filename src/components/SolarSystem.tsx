@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Html } from "@react-three/drei";
 import { useRouter } from "next/navigation";
 import * as THREE from "three";
@@ -13,22 +13,31 @@ interface PlanetProps {
   distance: number;
   speed: number;
   path: string;
-  isPaused: React.MutableRefObject<boolean>;
+  isPausedRef: React.MutableRefObject<boolean>;
   onNavigate: (path: string) => void;
 }
 
-function Planet({ name, color, radius, distance, speed, path, isPaused, onNavigate }: PlanetProps) {
+function Planet({
+  name,
+  color,
+  radius,
+  distance,
+  speed,
+  path,
+  isPausedRef,
+  onNavigate,
+}: PlanetProps) {
   const groupRef = useRef<THREE.Group>(null);
   const planetRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   // Random starting angle so they don't all align
-  const initialAngle = useMemo(() => Math.random() * Math.PI * 2, []);
+  const [initialAngle] = useState(() => Math.random() * Math.PI * 2);
   const angleRef = useRef(initialAngle);
 
   useFrame((state, delta) => {
     if (groupRef.current && planetRef.current) {
-      if (!isPaused.current) {
+      if (!isPausedRef.current) {
         angleRef.current += speed * delta;
       }
       groupRef.current.position.x = Math.cos(angleRef.current) * distance;
@@ -58,13 +67,13 @@ function Planet({ name, color, radius, distance, speed, path, isPaused, onNaviga
           onPointerOver={(e) => {
             e.stopPropagation();
             setHovered(true);
-            isPaused.current = true;
+            isPausedRef.current = true;
             document.body.style.cursor = "pointer";
           }}
           onPointerOut={(e) => {
             e.stopPropagation();
             setHovered(false);
-            isPaused.current = false;
+            isPausedRef.current = false;
             document.body.style.cursor = "auto";
           }}
         >
@@ -93,12 +102,12 @@ function Planet({ name, color, radius, distance, speed, path, isPaused, onNaviga
             onPointerOver={(e) => {
               e.stopPropagation();
               setHovered(true);
-              isPaused.current = true;
+              isPausedRef.current = true;
             }}
             onPointerOut={(e) => {
               e.stopPropagation();
               setHovered(false);
-              isPaused.current = false;
+              isPausedRef.current = false;
             }}
           >
             {name}
@@ -136,7 +145,7 @@ function getInitialCameraPosition(): [number, number, number] {
 }
 
 export default function SolarSystem() {
-  const isPaused = useRef(false);
+  const isPausedRef = useRef(false);
   const router = useRouter();
   const [isNavigating, setIsNavigating] = useState(false);
 
@@ -228,7 +237,12 @@ export default function SolarSystem() {
         <Sun />
 
         {planets.map((planet) => (
-          <Planet key={planet.name} {...planet} isPaused={isPaused} onNavigate={handleNavigate} />
+          <Planet
+            key={planet.name}
+            {...planet}
+            isPausedRef={isPausedRef}
+            onNavigate={handleNavigate}
+          />
         ))}
 
         <OrbitControls
