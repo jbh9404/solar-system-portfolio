@@ -29,6 +29,20 @@ export default function AboutPage() {
               Contact Me
             </a>
           </div>
+
+          {/* Education */}
+          <div className="w-full mt-4 bg-white/5 p-5 rounded-xl border border-white/10 text-left">
+            <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+              🎓 Education
+            </h3>
+            <div>
+              <h4 className="text-[#4facf7] font-semibold">New York University (NYU)</h4>
+              <p className="text-sm text-white/80">
+                Computer Science <span className="text-xs text-[#4facf7]/80 ml-1 font-medium">(Graduated)</span>
+              </p>
+              <p className="text-xs text-white/50 mt-1">2018.09 - 2021.02</p>
+            </div>
+          </div>
         </div>
 
         {/* Intro & Highlights */}
